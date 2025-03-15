@@ -1,0 +1,50 @@
+import fs from "fs";
+
+/// BOT CONFIGURATION
+global.bot = {
+  name: "⺞ 𝗡𝗘𝗫𝗕𝗨𝗚 - 𝗦𝗜𝗕𝗔𝗬?",
+  number: "",
+  prefix: ".",
+  locale: "id",
+  timezone: "Asia/Jakarta",
+  newsletterJid: "120363393482713223@newsletter",
+  expiredAt: "",
+};
+
+/// BOT SETTING
+global.setting = JSON.parse(fs.readFileSync("./system/config/setting.json"));
+global.saveSetting = () =>
+  fs.writeFileSync(
+    "./system/config/setting.json",
+    JSON.stringify(global.setting),
+  );
+
+/// OWNER INFORMATION
+global.owner = {
+  name: "Bayu Mahadika",
+  number: "6285174174657",
+};
+
+global.db = {
+  users: JSON.parse(fs.readFileSync("./system/data/users.json")),
+  save: (name) => {
+    switch (name.toLowerCase()) {
+      case "users":
+        fs.writeFileSync(
+          "./system/data/users.json",
+          JSON.stringify(global.db.users),
+        );
+        break;
+    }
+  },
+};
+
+global.images = {
+  logo: "./system/data/images/logo.png",
+  banner: "./system/data/images/banner.png",
+};
+
+global.mess = {
+  dev: "Masih dalam tahap pengembangan",
+  spam: "*[Spam start]*: Untuk memberhentikan spam jalankan perintah .restart (Restart bot)",
+};
